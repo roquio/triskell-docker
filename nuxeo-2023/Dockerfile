@@ -162,6 +162,7 @@ VOLUME /tmp
 ENV PATH $NUXEO_HOME/bin:$PATH
 
 EXPOSE 8080
+EXPOSE 8787
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["nuxeoctl", "console"]
 
