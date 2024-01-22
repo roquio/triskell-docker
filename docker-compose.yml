@@ -19,20 +19,13 @@ services:
       - opendj
 
   postgres:
-    image: postgres:9.5
+    image: postgres:15.3-bullseye
     environment:
-      - POSTGRES_PASSWORD=osivia
+      - POSTGRES_PASSWORD=password
       - POSTGRES_USER=nuxeo
       - POSTGRES_DB=nuxeodb
     volumes:
       - postgres-data:/var/lib/postgresql/data
-
-  postgres-notif:
-    image: postgres:9.5
-    environment:
-      - POSTGRES_PASSWORD=osivia
-      - POSTGRES_USER=notif
-      - POSTGRES_DB=notifdb
 
   elasticsearch:
     image: elasticsearch:1.7.6
@@ -41,13 +34,16 @@ services:
       - "9200"
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
+    healthcheck:
+      test: curl -s http://localhost:9200 >/dev/null || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 50
 
   nuxeo:
     build: nuxeo
     environment:
       - PUBLIC_HOST=${PUBLIC_HOST}
-      - LDAP_HOST=opendj
-      - CAS_HOST=cas:8080
       - NUXEO_DB_HOST=postgres
       - NUXEO_ES_CLUSTER=es-cluster
       - NUXEO_ES_NODES=elasticsearch:9300
@@ -57,8 +53,10 @@ services:
     volumes:
       - nuxeo-data:/data
     depends_on:
-      - postgres
-      - elasticsearch
+      postgres:
+        condition: service_started
+      elasticsearch:
+        condition: service_healthy
 
   mysql:
     image: mysql:5.7

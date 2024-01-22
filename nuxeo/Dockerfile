@@ -3,19 +3,20 @@ FROM openjdk:8-jdk
 # Update
 RUN apt-get update \
     && apt-get install -y --force-yes --no-install-recommends \
-        netcat \
-	    perl \
 	    locales \
-	    pwgen \
-	    imagemagick \
-	    ffmpeg2theora \
-	    poppler-utils \
-	    libwpd-tools \
-	    exiftool \
-	    ghostscript \
-	    libreoffice \
-	    ffmpeg \
-        x264 \
+#       netcat \
+#	    perl \
+#	    locales \
+#	    pwgen \
+#	    imagemagick \
+#	    ffmpeg2theora \
+#	    poppler-utils \
+#	    libwpd-tools \
+#	    exiftool \
+#	    ghostscript \
+#	    libreoffice \
+#	    ffmpeg \
+#        x264 \
     && apt-get purge -y \
     && rm -rf /var/lib/apt/lists/*
 
@@ -30,8 +31,8 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # Vars
 ENV NUXEO_USER nuxeo
 ENV NUXEO_HOME /opt/nuxeo
-ENV NUXEO_VERSION=5.0.6
-ENV NUXEO_DISTRIBUTION toutatice-ecm-acrennes-distribution-${NUXEO_VERSION}
+ENV NUXEO_VERSION=1.0-SNAPSHOT
+ENV NUXEO_DISTRIBUTION triskell-nuxeo-distribution-${NUXEO_VERSION}
 
 # User
 RUN useradd --create-home --home-dir /home/$NUXEO_USER --shell /bin/bash --user-group $NUXEO_USER
