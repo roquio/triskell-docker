@@ -1,3 +1,4 @@
+*.war
 *.zip
 
 # Created by https://www.toptal.com/developers/gitignore/api/eclipse,intellij+all
