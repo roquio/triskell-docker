@@ -102,6 +102,7 @@ services:
 
 volumes:
   opendj-data:
+  postgres-data:
   httpd-ssl:
   postgres-nuxeo-2023-data:
   elasticsearch-nuxeo-2023-data:
