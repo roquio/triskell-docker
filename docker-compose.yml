@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 
 services:
 
@@ -18,87 +18,13 @@ services:
     links:
       - opendj
 
-  postgres:
-    image: postgres:9.5
-    environment:
-      - POSTGRES_PASSWORD=osivia
-      - POSTGRES_USER=nuxeo
-      - POSTGRES_DB=nuxeodb
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-
-  postgres-notif:
-    image: postgres:9.5
-    environment:
-      - POSTGRES_PASSWORD=osivia
-      - POSTGRES_USER=notif
-      - POSTGRES_DB=notifdb
-
-  elasticsearch:
-    image: elasticsearch:1.7.6
-    command: elasticsearch -Des.cluster.name=es-cluster
-    ports:
-      - "9200"
-    volumes:
-      - elasticsearch-data:/usr/share/elasticsearch/data
-
-  nuxeo:
-    build: nuxeo
-    environment:
-      - PUBLIC_HOST=${PUBLIC_HOST}
-      - LDAP_HOST=opendj
-      - CAS_HOST=cas:8080
-      - NUXEO_DB_HOST=postgres
-      - NUXEO_ES_CLUSTER=es-cluster
-      - NUXEO_ES_NODES=elasticsearch:9300
-    ports:
-      - "8080"
-      - "8788"
-    volumes:
-      - nuxeo-data:/data
-    depends_on:
-      - postgres
-      - elasticsearch
-
-  mysql:
-    image: mysql:5.7
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    environment:
-      - MYSQL_DATABASE=portaldb
-      - MYSQL_USER=portal
-      - MYSQL_PASSWORD=osivia
-      - MYSQL_ROOT_PASSWORD=osivia
-    volumes:
-      - mysql-data:/var/lib/mysql
-    profiles:
-      - portal
-
-  portal:
-    build: portal
-    environment:
-      - PUBLIC_HOST=${PUBLIC_HOST}
-      - NUXEO_HOST=nuxeo
-      - PORTAL_DB_HOST=mysql
-      - CAS_HOST=cas
-      - LDAP_HOST=opendj
-    ports:
-      - "8080"
-      - "8787"
-    volumes:
-      - avatars-storage:/tmp/avatars:rw
-    depends_on:
-      - mysql
-    profiles:
-      - portal
-
   httpd:
     build: httpd
     environment:
       - PUBLIC_HOST=${PUBLIC_HOST}
       - HTTPS_PROVIDED=false
       - CAS_HOST=cas
-      - NUXEO_HOST=nuxeo
-      - PORTAL_HOSTS=portal
+      - NUXEO_HOST=nuxeo-2023
     ports:
       - "80:80"
       - "443:443"
@@ -106,17 +32,7 @@ services:
       - httpd-ssl:/etc/ssl
     links:
       - cas
-      - nuxeo
-
-  kibana:
-    image: kibana:4.1
-    environment:
-      - ELASTICSEARCH_URL=http://elasticsearch:9200
-    ports:
-      - "5601:5601"
-    profiles:
-      - dev
-
+      - nuxeo-2023
 
   postgres-nuxeo-2023:
     image: postgres:13
@@ -131,8 +47,6 @@ services:
       resources:
         limits:
           memory: 512m
-    profiles:
-      - nuxeo-2023
 
   elasticsearch-nuxeo-2023:
     image: elasticsearch:8.7.0
@@ -153,8 +67,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 50
-    profiles:
-      - nuxeo-2023
 
   nuxeo-2023:
     build:
@@ -164,7 +76,7 @@ services:
         SCM_REF: built-locally
         VERSION: latest-lts-2023
     ports:
-      - "8080"
+      - "8080:8080"
       - "8787"
     depends_on:
       postgres-nuxeo-2023:
@@ -175,8 +87,6 @@ services:
       resources:
         limits:
           memory: 2g
-    profiles:
-      - nuxeo-2023
 
   kibana-nuxeo-2023:
     image: kibana:8.7.0
@@ -188,17 +98,10 @@ services:
       resources:
         limits:
           memory: 512m
-    profiles:
-      - nuxeo-2023
 
 
 volumes:
   opendj-data:
-  postgres-data:
-  elasticsearch-data:
-  nuxeo-data:
-  mysql-data:
-  avatars-storage:
   httpd-ssl:
   postgres-nuxeo-2023-data:
   elasticsearch-nuxeo-2023-data:
