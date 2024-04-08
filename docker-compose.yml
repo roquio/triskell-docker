@@ -24,7 +24,7 @@ services:
       - PUBLIC_HOST=${PUBLIC_HOST}
       - HTTPS_PROVIDED=false
       - CAS_HOST=cas
-      - NUXEO_HOST=nuxeo-2023
+      - NUXEO_HOST=nuxeo
     ports:
       - "80:80"
       - "443:443"
@@ -32,9 +32,9 @@ services:
       - httpd-ssl:/etc/ssl
     links:
       - cas
-      - nuxeo-2023
+      - nuxeo
 
-  postgres-nuxeo-2023:
+  postgres:
     image: postgres:13
     environment:
       - POSTGRES_PASSWORD=password
@@ -42,22 +42,22 @@ services:
       - POSTGRES_DB=nuxeodb
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
-      - postgres-nuxeo-2023-data:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
     deploy:
       resources:
         limits:
           memory: 512m
 
-  elasticsearch-nuxeo-2023:
+  elasticsearch:
     image: elasticsearch:8.7.0
     environment:
-      - cluster.name=es-nuxeo-2023-cluster
+      - cluster.name=es-cluster
       - discovery.type=single-node
       - xpack.security.enabled=false
     ports:
       - "9200"
     volumes:
-      - elasticsearch-nuxeo-2023-data:/usr/share/elasticsearch/data
+      - elasticsearch-data:/usr/share/elasticsearch/data
     deploy:
       resources:
         limits:
@@ -68,9 +68,9 @@ services:
       timeout: 5s
       retries: 50
 
-  nuxeo-2023:
+  nuxeo:
     build:
-      context: ./nuxeo-2023
+      context: ./nuxeo
       args:
         BUILD_TAG: local-nuxeo-nuxeo
         SCM_REF: built-locally
@@ -78,22 +78,24 @@ services:
     ports:
       - "8080:8080"
       - "8787"
+    volumes:
+      - nuxeo-data:/var/lib/nuxeo
     depends_on:
-      postgres-nuxeo-2023:
+      postgres:
         condition: service_started
-      elasticsearch-nuxeo-2023:
+      elasticsearch:
         condition: service_healthy
     deploy:
       resources:
         limits:
           memory: 2g
 
-  kibana-nuxeo-2023:
+  kibana:
     image: kibana:8.7.0
     ports:
-      - "5601"
+      - "5601:5601"
     depends_on:
-      - elasticsearch-nuxeo-2023
+      - elasticsearch
     deploy:
       resources:
         limits:
@@ -102,7 +104,7 @@ services:
 
 volumes:
   opendj-data:
-  postgres-data:
   httpd-ssl:
-  postgres-nuxeo-2023-data:
-  elasticsearch-nuxeo-2023-data:
+  postgres-data:
+  elasticsearch-data:
+  nuxeo-data:
