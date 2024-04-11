@@ -159,6 +159,7 @@ VOLUME /var/lib/nuxeo
 VOLUME /var/log/nuxeo
 VOLUME /tmp
 
+
 ENV PATH $NUXEO_HOME/bin:$PATH
 
 EXPOSE 8080
@@ -169,3 +170,4 @@ CMD ["nuxeoctl", "console"]
 # Run as a non root user with a fixed UID
 USER 900
 
+WORKDIR $NUXEO_HOM

@@ -35,11 +35,11 @@ services:
       - nuxeo
 
   postgres:
-    image: postgres:13
+    build: postgres
     environment:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=nuxeo
-      - POSTGRES_DB=nuxeodb
+      - POSTGRES_MULTIPLE_DATABASES=nuxeodb, modulodb, workspacesdb, notificationsdb
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - postgres-data:/var/lib/postgresql/data
