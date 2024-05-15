@@ -15,6 +15,10 @@ services:
       - "8080"
     links:
       - opendj
+    deploy:
+      resources:
+        limits:
+          memory: 768m
 
   httpd:
     build: httpd
@@ -61,10 +65,10 @@ services:
     deploy:
       resources:
         limits:
-          memory: 1g
+          memory: 512m
     healthcheck:
       test: curl -s http://localhost:9200 >/dev/null || exit 1
-      interval: 10s
+      interval: 5s
       timeout: 5s
       retries: 50
 
@@ -85,6 +89,10 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
       KAFKA_LOG_DIRS: '/tmp/kraft-combined-logs'
+    deploy:
+      resources:
+        limits:
+          memory: 512m
 
   nuxeo:
     build:
@@ -94,7 +102,7 @@ services:
         SCM_REF: built-locally
         VERSION: latest-lts-2023
     ports:
-      - "8080:8080"
+      - "8081:8080"
       - "8787:8787"
     volumes:
       - nuxeo-data:/var/lib/nuxeo
@@ -106,7 +114,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 2g
+          memory: 768m
 
   kibana:
     image: kibana:8.7.0
