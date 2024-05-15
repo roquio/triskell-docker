@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   unzip \
   && rm -rf /var/lib/apt/lists/*
 
-COPY triskell-nuxeo-server-*.zip /tmp/nuxeo-distribution-tomcat.zip
+COPY nuxeo-workspaces-server-*.zip /tmp/nuxeo-distribution-tomcat.zip
 
 ENV NUXEO_HOME=/distrib
 
