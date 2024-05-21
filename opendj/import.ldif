@@ -16,6 +16,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTAuxEnseignant
+elenid: 1c927f73-fb8c-4c7f-b5a5-5442c0b54894
 cn: Lemoine Nathalie
 displayName: Nathalie Lemoine
 employeeNumber: 05E9210298ATP
@@ -67,6 +68,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTAuxEnseignant
+elenid: 1e067c03-d0ed-4ed3-ac57-12be86feb325
 cn: Mery Jeanne-Marie
 displayName: Jeanne-Marie Mery
 employeeNumber: 07E9209508EHM
@@ -108,6 +110,7 @@ objectClass: organizationalPerson
 objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
+elenid: c8da3acf-51f4-4e80-9a98-019e137e2ff2
 cn: Rupin Nx
 displayName: nx rupin
 ENTPersonAlias: Arnaud
@@ -133,6 +136,7 @@ objectClass: organizationalPerson
 objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
+elenid: 8e8454f4-5771-47b4-9da9-02f2ee6400dc
 cn:: U3lzdMOobWU=
 displayName: Administrator
 ENTPersonProfils: cn=SuperAdministrators,ou=profils,ou=groupes,dc=ent-bretagne,dc=fr
@@ -152,6 +156,7 @@ objectClass: organizationalPerson
 objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
+elenid: 76ad54bb-036a-4d37-96d4-d38198cb7414
 cn: Assistance
 displayName: Assistance
 ENTPersonAlias: Quoi mettre comme surnom ?
@@ -174,6 +179,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: ENTAuxPersRelEleve
 objectClass: top
+elenid: b384335b-6aa3-4a7b-84ea-1f6a4e9bc56d
 cn: Homer Simpson
 displayName: Homer Simpson
 ENTAuxPersRelEleveEleve: uid=lsimpson,ou=personnes,dc=ent-bretagne,dc=fr
@@ -197,6 +203,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTEleve
+elenid: 21d25c2a-d14e-4757-84aa-3d89eddf1ce7
 cn: Lisa Simpson
 displayName: Lisa Simpson
 ENTEleveStructRattachId: uid=lsimpson,ou=personnes,dc=ent-bretagne,dc=fr
@@ -220,6 +227,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTEleve
+elenid: 5e9ae231-37e7-4394-b224-315b9b58960d
 cn: Bart Simpson
 displayName: Bart Simpson
 ENTEleveStructRattachId: uid=bsimpson,ou=personnes,dc=ent-bretagne,dc=fr
@@ -244,6 +252,7 @@ objectClass: organizationalPerson
 objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
+elenid: a9c23bc8-c361-44b9-b574-f28c71a3c261
 cn: Le prof
 displayName: Le prof
 ENTPersonProfils: cn=SERIA-T_nx,ou=profils,ou=groupes,dc=ent-bretagne,dc=fr
@@ -266,6 +275,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTEleve
+elenid: b16ecd93-76cd-4863-ab4f-566d3bbe07c1
 cn: Maggie Simpson
 displayName: Maggie Simpson
 ENTEleveStructRattachId: uid=msimpson,ou=personnes,dc=ent-bretagne,dc=fr
@@ -289,6 +299,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTAuxEnseignant
+elenid: d811691c-68b3-47b8-8038-66b3ec4fe9b6
 cn: Rose Sandrine
 displayName: Sandrine Rose
 employeeNumber: 62G0415835KFN
@@ -346,6 +357,7 @@ objectClass: organizationalPerson
 objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
+elenid: 52c12e27-e39b-4c3c-96dc-59d083f05390
 cn: Jahier Nx
 ENTPersonJointure: c6a49ae3-28be-4fc7-9acf-3773d009e980
 ENTPersonProfils: cn=toutatice_nuxeo_admin,ou=profils,ou=groupes,dc=ent-bretagne,dc=fr
@@ -374,6 +386,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTAuxEnseignant
+elenid: 82ee62d9-e430-474d-ab15-c532f8fc94e5
 cn: Barbier Alain
 displayName: Alain Barbier
 employeeNumber: 35G9305309DCI
@@ -422,6 +435,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTAuxEnseignant
+elenid: c00c6ff6-dded-4b92-b4d8-989c2c39e701
 cn: Aubry Fabienne
 displayName: Fabienne Aubry
 employeeNumber: 14A1325162ISI
@@ -469,6 +483,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTAuxEnseignant
+elenid: fdd5ce7c-c6e5-4a09-bd3c-edeb6add7b9d
 cn: Pasquier Brigitte
 displayName: Brigitte Pasquier
 employeeNumber: 35G9304549DFN
@@ -515,6 +530,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTAuxEnseignant
+elenid: 57e9888c-99e4-4fa9-bd4e-fa6709ef38e6
 cn: Mahe Patrice
 displayName: Patrice mahe
 employeeNumber: 35G9301050VAH
@@ -565,6 +581,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTAuxEnseignant
+elenid: 767839e4-187f-469e-b344-dc55021edbfe
 cn: Doyen Evelyne
 displayName: Evelyne Doyen
 employeeNumber: 56G9302596MCG
@@ -608,6 +625,7 @@ objectClass: organizationalPerson
 objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
+elenid: 0a573051-aa64-4dba-86f6-e3f0705c0b57
 cn: Le Helley NX
 ENTPersonJointure: c6a49ae3-28be-4fc7-9acf-3773d009e980
 ENTPersonProfils: cn=toutatice_nuxeo_admin,ou=profils,ou=groupes,dc=ent-bretagne,dc=fr
@@ -636,6 +654,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTAuxEnseignant
+elenid: 4395d1ec-4009-4d22-91c1-e6f89db82428
 cn: Boudry Christelle
 displayName: Christelle Boudry
 employeeNumber: 25E9989343SEV
@@ -691,6 +710,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTAuxEnseignant
+elenid: 8fb6a5f4-9b36-49b6-be68-7c4a87311516
 cn: Kechis Karen
 displayName: Karen
 employeeNumber: 14P1422837APY
@@ -737,6 +757,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTAuxEnseignant
+elenid: f485c42f-6db2-4e99-ad44-516d5d4d6bfe
 cn: Cottin Brigitte
 displayName: Brigitte Cottin
 employeeNumber: 14E9219732WER
@@ -788,6 +809,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTAuxEnseignant
+elenid: 32e72bbc-82ae-4b1a-a8b5-57cdb742676a
 cn: Cabioch Bertrand
 displayName: Bertrand Cabioch
 employeeNumber: 35G9301127ARB
@@ -849,6 +871,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTAuxEnseignant
+elenid: db6f000b-109b-4635-89f1-38d4f68cdcf8
 cn: Dupriez Ariane
 displayName: Ariane Dupriez
 employeeNumber: 14E0455346IRI
@@ -889,6 +912,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTAuxEnseignant
+elenid: 58f4e915-732d-44c4-b8c6-eb99af5918dd
 cn: Mercier Pierrette
 displayName: Pierrette Mercier
 employeeNumber: 14E9322158MIV
@@ -940,6 +964,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTAuxEnseignant
+elenid: 6562deb8-7081-49c9-8bd3-5dfdb9de9ead
 cn: Pavageau Catherine
 displayName: Catherine Pavageau
 employeeNumber: 14E9938316NRA
@@ -986,6 +1011,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTAuxEnseignant
+elenid: 827ef2f3-64b1-4dbf-acdb-19675be196d4
 cn: Test Estelle
 displayName:: Q29tcHRlIMOpdGFibGlzc2VtZW50IFRlc3Q=
 employeeNumber: 35G9305309DCI
@@ -1034,6 +1060,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTAuxEnseignant
+elenid: b1e38ff5-c704-4abb-acc1-6ed48f2a3b8f
 cn:: Um9zZSBSZW7DqQ==
 displayName:: UmVuw6kgUm9zZQ==
 employeeNumber: 62G0415835KFN
@@ -1092,6 +1119,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTAuxEnseignant
+elenid: ba2e78ca-028d-4262-883b-169127481bb3
 cn: Joyaux Bastien
 displayName: Bastien Joyaux
 employeeNumber: 17E1074957HFS
@@ -1180,6 +1208,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTAuxEnseignant
+elenid: 83265be6-8740-44e0-8057-c99ac3bf5329
 cn: Dufour Thierry
 displayName: Thierry Dufour
 employeeNumber: 17E1074957HFS
@@ -1269,6 +1298,7 @@ objectClass: organizationalPerson
 objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
+elenid: d34ea4f7-491b-4040-91dc-1ddd76183a4f
 cn: Noctulle Pierre
 displayName: Pierre Noctulle
 employeeNumber: 0234567891
@@ -1307,6 +1337,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: ENTAuxPersRelEleve
 objectClass: top
+elenid: 058d1fc8-b196-4238-9f44-1cea0dea5d8f
 cn: LANG Claudine
 displayName: Claudine LANG
 employeeNumber: claudine.lang@ATEN
@@ -1336,6 +1367,7 @@ objectClass: inetOrgPerson
 objectClass: ENTPerson
 objectClass: top
 objectClass: ENTEleve
+elenid: 89a4f439-76c6-427f-bfe6-2ef2f5a2eb28
 cn: Esther LANG
 displayName: Esther LANG
 Divcod: 3B
