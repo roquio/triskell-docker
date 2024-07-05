@@ -2,42 +2,46 @@ services:
 
   opendj:
     build: opendj
-    ports:
-      - "1389:1389"
+    image: registry.roqu.io:5043/triskell-opendj
+    restart: unless-stopped
+    expose:
+      - "1389"
     volumes:
       - opendj-data:/opt/opendj/db
 
   cas:
     build: cas
+    image: registry.roqu.io:5043/triskell-cas
+    restart: unless-stopped
     environment:
       - LDAP_HOST=opendj
-    ports:
+    expose:
       - "8080"
     links:
       - opendj
     deploy:
       resources:
         limits:
-          memory: 768m
+          memory: 1gb
 
   httpd:
-    build: httpd
-    environment:
-      - PUBLIC_HOST=${PUBLIC_HOST}
-      - HTTPS_PROVIDED=false
-      - CAS_HOST=cas
-      - NUXEO_HOST=nuxeo
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - httpd-ssl:/etc/ssl
-    links:
+    build:
+      context: httpd
+      args:
+        - TRISKELL_PUBLIC_HOST=demo.roqu.io
+    image: registry.roqu.io:5043/triskell-httpd
+    restart: unless-stopped
+    depends_on:
       - cas
       - nuxeo
+      - back-end
+      - front-end
+    ports:
+      - "8180:80"
 
   postgres:
     build: postgres
+    image: registry.roqu.io:5043/triskell-postgres
     environment:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=nuxeo
@@ -45,12 +49,12 @@ services:
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - postgres-data:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
+    expose:
+      - "5432"
     deploy:
       resources:
         limits:
-          memory: 512m
+          memory: 1gb
 
   elasticsearch:
     image: elasticsearch:8.7.0
@@ -58,14 +62,14 @@ services:
       - cluster.name=es-cluster
       - discovery.type=single-node
       - xpack.security.enabled=false
-    ports:
-      - "9200:9200"
+    expose:
+      - "9200"
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
     deploy:
       resources:
         limits:
-          memory: 512m
+          memory: 1gb
     healthcheck:
       test: curl -s http://localhost:9200 >/dev/null || exit 1
       interval: 5s
@@ -92,7 +96,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 512m
+          memory: 1gb
 
   nuxeo:
     build:
@@ -101,9 +105,9 @@ services:
         BUILD_TAG: local-nuxeo-nuxeo
         SCM_REF: built-locally
         VERSION: latest-lts-2023
-    ports:
-      - "8081:8080"
-      - "8787:8787"
+    image: registry.roqu.io:5043/triskell-nuxeo
+    expose:
+      - "8080"
     volumes:
       - nuxeo-data:/var/lib/nuxeo
     depends_on:
@@ -114,23 +118,23 @@ services:
     deploy:
       resources:
         limits:
-          memory: 768m
+          memory: 1gb
 
-  kibana:
-    image: kibana:8.7.0
-    ports:
-      - "5601:5601"
-    depends_on:
-      - elasticsearch
-    deploy:
-      resources:
-        limits:
-          memory: 512m
+  back-end:
+    build: back-end
+    image: registry.roqu.io:5043/triskell-back-end
+    expose:
+      - "8080"
+
+  front-end:
+    build: front-end
+    image: registry.roqu.io:5043/triskell-front-end
+    expose:
+      - "80"
 
 
 volumes:
   opendj-data:
-  httpd-ssl:
   postgres-data:
   elasticsearch-data:
   nuxeo-data:

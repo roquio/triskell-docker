@@ -170,4 +170,4 @@ CMD ["nuxeoctl", "console"]
 # Run as a non root user with a fixed UID
 USER 900
 
-WORKDIR $NUXEO_HOM
+WORKDIR $NUXEO_HOME
